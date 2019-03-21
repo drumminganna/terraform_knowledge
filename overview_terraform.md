@@ -17,14 +17,14 @@ Multi-tier Architecture
 
 
 ## Important 
-deployes only what is not deployed
-Reusabilit
-high-level infrastructure orchestration tool 
-Not intended for config management
-provides "provisioners" that call tools for performing config management
+* deployes only what is not deployed
+* Reusabilit
+* high-level infrastructure orchestration tool 
+* Not intended for config management
+* provides "provisioners" that call tools for performing config management
 
 ## Execution Plans
-shows intent of the deploy
+* shows intent of the deploy
 
 ## Resource Graph
-marks all changes and dependencies
+* marks all changes and dependencies
