@@ -3,17 +3,18 @@ TERRAFORM
 www.terraform.io
 -->
 
-tool for building infrastructure
-Infrastructure as Code
+# Tool for building infrastructure
+* Infrastructure as Code
+* www.terraform.io
 
-# Version
-open Source
-Enterprise
+## Version
+* open Source
+* Enterprise
 
-# Use Cases
-Clouds
-Software Defined Networking
-Multi-tier Architecture
+## Use Cases
+* Clouds
+* Software Defined Networking
+* Multi-tier Architecture
 
 
 ## Important 
