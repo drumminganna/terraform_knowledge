@@ -1,18 +1,17 @@
-<<<<<<< HEAD
-terraform init
-terraform plan
-terraform apply
-terraform show
+* terraform init
+* terraform plan
+* terraform apply
+* terraform show
 
 
-terraform taint <container_name>
-terraform untaint <container_name>
+* terraform taint <container_name>
+* terraform untaint <container_name>
 
 terraform console
-# example:
+# Example:
 > docker_container.container_id.name
 
-or you define Outputs:
+## Define Outputs:
 # Output the IP Address of the Container
 output "IP Address" {
   value = "${docker_container.container_id.ip_address}"
@@ -27,19 +26,16 @@ output "container_name" {
 
 variable "image" {
   description = "image for container"
-  default = "ghost:latest"
-}
+  default = "ghost:latest" }
 
 # Download the latest Ghost Image
-                        "resource-id"
+"resource-id" = "image_id" in case below
 resource "docker_image" "image_id" {
-  name = "${var.image}"
-}
+  name = "${var.image}" }
 ## Mapping, different configurations for different systems
 # in variable.tf
 variable "env" {
-  description = "env: dev or prod"
-}
+  description = "env: dev or prod" }
 variable "image" {
   description = "image for container"
   type = "map"
@@ -54,22 +50,22 @@ module "image" {
   image = "${lookup(var.image, var.env)}"
 }
 # Look up Env Variables:
- export TF_VAR_env=prod
- terraform console
+* export TF_VAR_env=prod
+* terraform console
 > lookup(var.ext_port, var.env)
-80
+> 80
 
 and after Lookup:
-unset TF_VAR_env
+* unset TF_VAR_env
 
 # Applying more than one Systems:
-terraform workspace new prod
-terraform workspace select prod
+* terraform workspace new prod
+* terraform workspace select prod
 
-terraform workspace select default
+* terraform workspace select default
 
-terraform.tfstate.d saves our workspaces.
-terraform.tfvars put our mapping for different Environments inside and remove it from variables.tf
+* terraform.tfstate.d saves our workspaces.
+* terraform.tfvars put our mapping for different Environments inside and remove it from variables.tf
 -> Take care of this file, because there are important/sensitive information inside
 
 # Output important informatioin in file:
@@ -78,6 +74,3 @@ resource "null_resource" "null_id" {
     command = "echo ${module.container.container_name}:${module.container.ip} >> container.txt"
   }
 }
-=======
-
->>>>>>> aa9611714f9b9fc37db94040c2ba4808d7b345a0
