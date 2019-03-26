@@ -3,36 +3,39 @@ terraform plan
 terraform apply  
 terraform show  
 
-
-* terraform taint <container_name>
-* terraform untaint <container_name>
+terraform taint <container_name>  
+terraform untaint <container_name>  
 
 terraform console
+
 # Example:
 > docker_container.container_id.name
 
 ## Define Outputs:
 # Output the IP Address of the Container
-output "IP Address" {
+`output "IP Address" {
   value = "${docker_container.container_id.ip_address}"
 }
 
 output "container_name" {  
   value = "${docker_container.container_id.name}"  
-}  
+}`  
 # Variables:
-
+`
 variable "image" {  
   description = "image for container"  
-  default = "ghost:latest" }  
-
+  default = "ghost:latest" 
+}  
+`
 # Download the latest Ghost Image
+
 "resource-id" = "image_id" in case belo  
 resource "docker_image" "image_id" {  
-  name = "${var.image}" }  
+  name = "${var.image}" } 
+
 ## Mapping, different configurations for different systems
 # in variable.tf
-variable "env" {  
+`variable "env" {  
   description = "env: dev or prod" }  
 variable "image" {  
   description = "image for container"  
@@ -41,7 +44,8 @@ variable "image" {
     dev = "ghost:latest"  
     prod = "ghost:alpine"  
   }  
-}  
+} 
+` 
 # in main.tf
 module "image" {
   source = "./image"
