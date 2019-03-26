@@ -19,7 +19,7 @@ www.terraform.io
 
 ## Important 
 * deployes only what is not deployed
-* Reusabilit
+* Reusability
 * high-level infrastructure orchestration tool 
 * Not intended for config management
 * provides "provisioners" that call tools for performing config management
@@ -29,3 +29,13 @@ www.terraform.io
 
 ## Resource Graph
 * marks all changes and dependencies
+
+## Different Files for Structure:
+* main.tf
+* outputs.tf
+* variables.tf
+
+## Many Environements/Components: Modules
+- Root Module
+- - Image Module
+- - Container Module    and so on.
