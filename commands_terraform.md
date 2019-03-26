@@ -1,7 +1,7 @@
-* terraform init
-* terraform plan
-* terraform apply
-* terraform show
+terraform init  
+terraform plan  
+terraform apply  
+terraform show  
 
 
 * terraform taint <container_name>
@@ -17,33 +17,31 @@ output "IP Address" {
   value = "${docker_container.container_id.ip_address}"
 }
 
-output "container_name" {
-  value = "${docker_container.container_id.name}"
-
-
-}
+output "container_name" {  
+  value = "${docker_container.container_id.name}"  
+}  
 # Variables:
 
-variable "image" {
-  description = "image for container"
-  default = "ghost:latest" }
+variable "image" {  
+  description = "image for container"  
+  default = "ghost:latest" }  
 
 # Download the latest Ghost Image
-"resource-id" = "image_id" in case below
-resource "docker_image" "image_id" {
-  name = "${var.image}" }
+"resource-id" = "image_id" in case belo  
+resource "docker_image" "image_id" {  
+  name = "${var.image}" }  
 ## Mapping, different configurations for different systems
 # in variable.tf
-variable "env" {
-  description = "env: dev or prod" }
-variable "image" {
-  description = "image for container"
-  type = "map"
-  default = {
-    dev = "ghost:latest"
-    prod = "ghost:alpine"
-  }
-}
+variable "env" {  
+  description = "env: dev or prod" }  
+variable "image" {  
+  description = "image for container"  
+  type = "map"  
+  default = {  
+    dev = "ghost:latest"  
+    prod = "ghost:alpine"  
+  }  
+}  
 # in main.tf
 module "image" {
   source = "./image"
