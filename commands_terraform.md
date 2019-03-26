@@ -1,0 +1,79 @@
+terraform init
+terraform plan
+terraform apply
+terraform show
+
+
+terraform taint <container_name>
+terraform untaint <container_name>
+
+terraform console
+# example:
+> docker_container.container_id.name
+
+or you define Outputs:
+# Output the IP Address of the Container
+output "IP Address" {
+  value = "${docker_container.container_id.ip_address}"
+}
+
+output "container_name" {
+  value = "${docker_container.container_id.name}"
+
+
+}
+# Variables:
+
+variable "image" {
+  description = "image for container"
+  default = "ghost:latest"
+}
+
+# Download the latest Ghost Image
+                        "resource-id"
+resource "docker_image" "image_id" {
+  name = "${var.image}"
+}
+## Mapping, different configurations for different systems
+# in variable.tf
+variable "env" {
+  description = "env: dev or prod"
+}
+variable "image" {
+  description = "image for container"
+  type = "map"
+  default = {
+    dev = "ghost:latest"
+    prod = "ghost:alpine"
+  }
+}
+# in main.tf
+module "image" {
+  source = "./image"
+  image = "${lookup(var.image, var.env)}"
+}
+# Look up Env Variables:
+ export TF_VAR_env=prod
+ terraform console
+> lookup(var.ext_port, var.env)
+80
+
+and after Lookup:
+unset TF_VAR_env
+
+# Applying more than one Systems:
+terraform workspace new prod
+terraform workspace select prod
+
+terraform workspace select default
+
+terraform.tfstate.d saves our workspaces.
+terraform.tfvars put our mapping for different Environments inside and remove it from variables.tf
+-> Take care of this file, because there are important/sensitive information inside
+
+# Output important informatioin in file:
+resource "null_resource" "null_id" {
+  provisioner "local-exec" {
+    command = "echo ${module.container.container_name}:${module.container.ip} >> container.txt"
+  }
+}
