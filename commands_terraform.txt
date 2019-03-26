@@ -58,7 +58,7 @@ terraform console
 > 80
 
 and after Lookup:
-* unset TF_VAR_env
+ unset TF_VAR_env
 
 # Applying more than one Systems:
  terraform workspace new prod
