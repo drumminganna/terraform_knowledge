@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 terraform init
 terraform plan
 terraform apply
@@ -77,3 +78,6 @@ resource "null_resource" "null_id" {
     command = "echo ${module.container.container_name}:${module.container.ip} >> container.txt"
   }
 }
+=======
+
+>>>>>>> aa9611714f9b9fc37db94040c2ba4808d7b345a0
