@@ -8,23 +8,23 @@ terraform untaint <container_name>
 
 terraform console
 
-# Example:
+# Example for Interpolation:
 > docker_container.container_id.name
 
-## Define Outputs:
-# Output the IP Address of the Container
-`output "IP Address" {
-  value = "${docker_container.container_id.ip_address}"
-}
+# Define Outputs:
+## Output the IP Address of the Container
+`output "IP Address" {  
+  value = "${docker_container.container_id.ip_address}"  
+}  
 
-output "container_name" {  
-  value = "${docker_container.container_id.name}"  
+output "container_name" {    
+  value = "${docker_container.container_id.name}"    
 }`  
 # Variables:
 `
-variable "image" {  
-  description = "image for container"  
-  default = "ghost:latest" 
+variable "image" {    
+  description = "image for container"    
+  default = "ghost:latest"   
 }  
 `
 # Download the latest Ghost Image
@@ -33,8 +33,8 @@ variable "image" {
 resource "docker_image" "image_id" {  
   name = "${var.image}" } 
 
-## Mapping, different configurations for different systems
-# in variable.tf
+# Mapping, different configurations for different systems
+## in variable.tf
 `variable "env" {  
   description = "env: dev or prod" }  
 variable "image" {  
@@ -46,7 +46,7 @@ variable "image" {
   }  
 } 
 ` 
-# in main.tf
+## in main.tf
 module "image" {
   source = "./image"
   image = "${lookup(var.image, var.env)}"
