@@ -42,7 +42,7 @@ www.terraform.io
 
 ## Challenges
 * make shure that your terraform configs are saved in UTF-8
-- - otherwise you can get the following output on powershell:
+- otherwise you can get the following output on powershell:
 >There are some problems with the configuration, described below.
 >
 >The Terraform configuration must be valid before initialization so that
