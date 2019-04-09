@@ -38,4 +38,14 @@ www.terraform.io
 ## Many Environements/Components: Modules
 - Root Module
 - - Image Module
-- - Container Module    and so on.
+- - Container Module    and so on
+
+## Challenges
+* make shure that your terraform configs are saved in UTF-8
+- - otherwise you can get the following output on powershell:
+>There are some problems with the configuration, described below.
+>
+>The Terraform configuration must be valid before initialization so that
+>Terraform can determine which modules and providers need to be installed.
+>
+>Error: Error parsing *: At 1:1: illegal char
